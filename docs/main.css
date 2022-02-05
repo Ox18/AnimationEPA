@@ -29,16 +29,15 @@ body{
 }
 
 .content .config{
-    background-color: red;
+    background-color: rgba(86, 170, 255, 0.176);
 }
 
 .content .preview{
-    background-color: greenyellow;
+    background-color: rgba(172, 255, 47, 0.17);
     position: relative;
-    display: grid;
 }
 
-.mobile_content{
+/* .mobile_content{
     position: relative;
     width: 70px;
     height: 70px;
@@ -47,7 +46,7 @@ body{
     border-radius: 15px;
     float: left;
     margin: 12px;
-}
+} */
 
 .menu-container, .list-container{
     padding: 25px;
