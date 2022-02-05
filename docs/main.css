@@ -28,13 +28,18 @@ body{
     grid-template-columns: 1fr 1fr;
 }
 
-.content .config{
-    background-color: rgba(86, 170, 255, 0.176);
-}
-
 .content .preview{
     background-color: rgba(172, 255, 47, 0.17);
     position: relative;
+}
+
+.content .config{
+    background-color: rgba(86, 170, 255, 0.176);
+    padding: 25px;
+}
+
+.config, h3{
+    text-align: center;
 }
 
 /* .mobile_content{

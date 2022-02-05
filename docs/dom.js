@@ -88,6 +88,7 @@ const data = {
     }
 };
 
+
 var code_epa = document.querySelector("#code_epa");
 
 code_epa.value = JSON.stringify(data);
@@ -97,9 +98,9 @@ code_epa.value = JSON.stringify(data);
 
 var list_container = document.querySelector(".list-container");
 
-const epa = JSON.parse(code_epa.value);
+var epa = JSON.parse(code_epa.value);
 
-const list = Object.keys(epa).slice(1);
+var list = Object.keys(epa).slice(1);
 
 var b = document.querySelector("#image_url").value;
 var a = {
@@ -107,20 +108,18 @@ var a = {
 }
 
 list.map(function (name_animation){
-    let container = document.createElement("div");
     let content = document.createElement("div");
     let config = document.createElement("div");
     let preview = document.createElement("div");
 
     content.classList.add("content");
     config.classList.add("config");
-    preview.classList.add("preview");
-
+    preview.classList.add("preview");   
 
     // add animation
     let x = 150;
     let y = 150;
-    let animation = new CAnimatedObject2(b,a.epa,x,y,preview,1,MOBILE_FPS,!0,LOOP_NORMAL,0,0,!0);
+    let animation = new CAnimatedObject2(b,a.epa,x,y,preview,1,MOBILE_FPS,!1,LOOP_NORMAL,0,1,!0);
     animation.ChangeEpaAnim(name_animation);
 
     // add to config
