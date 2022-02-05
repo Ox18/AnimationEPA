@@ -93,3 +93,5 @@ const animationDB = new AnimationDB();
 button.addEventListener("click", ()=>{
     animationDB.reload();
 });
+
+button.click();
