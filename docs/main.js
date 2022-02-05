@@ -1,3 +1,79 @@
+var TIME_SECOND = 1E3
+          , TIME_MINUTE = 60 * TIME_SECOND
+          , TIME_HOUR = 60 * TIME_MINUTE
+          , TIME_DAY = 24 * TIME_HOUR
+          , TIME_WEEK = 7 * TIME_DAY
+          , TIME_MONTH = 30 * TIME_DAY
+          , TIME_YEAR = 365 * TIME_DAY
+          , get_time = Date.now
+          , Now = Date.now
+          , max = Math.max
+          , min = Math.min
+          , abs = Math.abs
+          , round = Math.round
+          , floor = Math.floor
+          , ceil = Math.ceil
+          , PI = Math.PI
+          , log = console.log.bind(console)
+          , info = console.info.bind(console)
+          , warn = console.warn.bind(console)
+          , error = console.error.bind(console);
+function DragonClock() {
+    this.registered = {};
+    this.registered_last = void 0;
+    this.length = this.next_id = 0
+}
+DragonClock.prototype.Add = function(a, b) {
+    b ? this.registered_last = a : this.registered[this.next_id] = a;
+    return this.next_id++
+}
+;
+DragonClock.prototype.Remove = function(a) {
+    delete this.registered[a]
+}
+;
+DragonClock.prototype.StartLoop = function() {
+    function a() {
+        if (b.stop)
+            b.looping = !1;
+        else {
+            requestAnimationFrame(a);
+            var d = get_time()
+              , e = d - c;
+            c = d;
+            var d = 0, f;
+            for (f in b.registered)
+                d++,
+                b.registered[f](e);
+            b.registered_last && b.registered_last();
+            b.length = d
+        }
+    }
+    this.stop = !1;
+    if (!this.looping) {
+        var b = this
+          , c = get_time();
+        this.looping = !0;
+        a()
+    }
+}
+;
+DragonClock.prototype.StopLoop = function() {
+    this.stop = !0
+}
+;
+DragonClock.Add = function(a, b, c) {
+    if (a.Update)
+        a._dragonclock_id = g_dragonClock.Add(a[b || "Update"].bind(a), c);
+    else
+        throw Error("DragonClock - registered class does not have Update function");
+}
+;
+DragonClock.Remove = function(a) {
+    void 0 != a._dragonclock_id ? g_dragonClock.Remove(a._dragonclock_id) : warn("[DragonClock] Trying to remove an object that was not added:", a)
+}
+;
+var g_dragonClock = new DragonClock;
 var $jscomp = {
     scope: {}
 };
